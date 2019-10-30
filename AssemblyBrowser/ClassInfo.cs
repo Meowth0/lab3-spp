@@ -16,7 +16,6 @@ namespace AssemblyBrowser
             set { _name = value; }
         }
 
-        //список категорий
         public List<ClassInfoElement> Elements
         {
             get
@@ -49,7 +48,6 @@ namespace AssemblyBrowser
             Elements.Add(new ClassInfoElement("Methods", new List<IField>()));
         }
 
-        //сканирование полей
         public void ScanFields()
         {
             FieldInfo[] fields = _type.GetFields(BindingFlags.DeclaredOnly |BindingFlags.Static| BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -60,7 +58,6 @@ namespace AssemblyBrowser
             }
         }
 
-        //сканирование свойств
         public void ScanProperties()
         {
             PropertyInfo[] properties = _type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -71,7 +68,6 @@ namespace AssemblyBrowser
             }
         }
         
-        //сканирование методов
         public void ScanMethods()
         {
             MethodInfo[] methods = _type.GetMethods(BindingFlags.DeclaredOnly |BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);

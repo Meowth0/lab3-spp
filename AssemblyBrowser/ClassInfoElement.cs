@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace AssemblyBrowser
 {
-    //класс - описание категории(нужен для tree view)
+    
     public class ClassInfoElement
     {
-        //имя категории
         private string _classification;
-        //элементы категории
         private List<IField> _elements;
 
         public string Classification

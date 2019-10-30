@@ -13,7 +13,7 @@ namespace AssemblyBrowserUnitTest
         [TestInitialize]
         public void Initialize()
         {
-            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName+ "\\LibraryForTesting\\bin\\Debug\\LibraryForTesting.dll";
+            string path = Directory.GetCurrentDirectory() + "\\LibraryForTesting.dll";
             AssemblyBrowser.AssemblyBrowser browser = new AssemblyBrowser.AssemblyBrowser();
             
             _result = browser.Browse(path);
@@ -55,7 +55,7 @@ namespace AssemblyBrowserUnitTest
         public void MethodsTest()
         {
             Assert.IsNotNull(_result.Namespaces[1].Classes[1].Elements[2].ClassificationElements);
-            Assert.AreEqual(3, _result.Namespaces[1].Classes[1].Elements[2].ClassificationElements.Count);
+            Assert.AreEqual(4, _result.Namespaces[1].Classes[1].Elements[2].ClassificationElements.Count);
         }
     }
 }

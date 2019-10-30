@@ -6,18 +6,13 @@ namespace AssemblyBrowser
     public class AssemblyBrowser
     {
         private Assembly _asm;
-        private AssemblyResult _result;
+        
 
-        public AssemblyBrowser()
-        {
-            _result = new AssemblyResult();
-        }
-
-        //сканирование сборки
         public AssemblyResult Browse(string filename)
         {
             Type[] types;
             NamespaceInfo searchResult;
+            AssemblyResult _result = new AssemblyResult(); 
 
             _asm = Assembly.LoadFrom(filename);
             types = _asm.GetTypes();
