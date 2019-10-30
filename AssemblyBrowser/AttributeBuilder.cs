@@ -6,7 +6,6 @@ namespace AssemblyBrowser
 {
     public static class AttributeBuilder
     {
-        //модификаторы доступа для классов
         private static string GetClassAccessModifiers(Type type)
         {            
             if (type.IsNestedPrivate)
@@ -27,7 +26,6 @@ namespace AssemblyBrowser
                 return "public ";
         }
 
-        //модификаторы доступа полей
         private static string GetFieldAccessModifiers(FieldInfo field)
         {    
             if (field.IsAssembly)
@@ -44,7 +42,6 @@ namespace AssemblyBrowser
                 return "public ";
         }
 
-        //модификаторы доступа свойств
         private static string GetPropertyAccessModifiers(PropertyInfo property)
         {
             List<string> modifiers = new List<string> { "private ", "private protected ", "protected internal ", "protected ", "internal ", "public " };
@@ -60,7 +57,6 @@ namespace AssemblyBrowser
             return modifiers[max];
         }
 
-        //модификаторы доступа методов
         private static string GetMethodAccessModifiers(MethodInfo method)
         {
             if (method.DeclaringType.IsInterface)
@@ -79,7 +75,6 @@ namespace AssemblyBrowser
                 return "public ";
         }
 
-        //модификаторы наследования класса
         private static string GetClassModifiers(Type type)
         {
             if (type.IsAbstract && type.IsSealed)
@@ -91,7 +86,6 @@ namespace AssemblyBrowser
             return "";
         }
         
-        //модификаторы поля
         private static string GetFieldModifiers(FieldInfo field)
         {
             string result = "";
@@ -104,7 +98,6 @@ namespace AssemblyBrowser
             return result;
         }
 
-        //модификаторы наследования свойства
         private static string GetPropertyModifiers(PropertyInfo property)
         {
             MethodInfo methodInfo = property.GetGetMethod(true);
@@ -117,7 +110,6 @@ namespace AssemblyBrowser
             return GetMethodModifiers(methodInfo);
         }        
 
-        //модификаторы наследования метода
         private static string GetMethodModifiers(MethodInfo method)
         {
             if (method.IsAbstract && !method.DeclaringType.IsInterface)
@@ -131,7 +123,6 @@ namespace AssemblyBrowser
             return "";
         }
 
-        //модификаторы параметров 
         private static string GetParameterModifiers(ParameterInfo parameter)
         {
             if (parameter.IsOut)
@@ -158,7 +149,6 @@ namespace AssemblyBrowser
             return "";
         }
                 
-        //модификаторы для классов, интерфейсов и т.д
         public static string GetClassAtributes(Type type)
         {
             if (type.IsClass && (type.BaseType != typeof(MulticastDelegate)) )
@@ -166,19 +156,16 @@ namespace AssemblyBrowser
             return GetClassAccessModifiers(type) + GetClassification(type);
         }
 
-        //модификаторы для полей
         public static string GetFieldAtributes(FieldInfo field)
         {
             return GetFieldAccessModifiers(field) + GetFieldModifiers(field);
         }
 
-        //модификаторы для свойств
         public static string GetPropertyAtributes(PropertyInfo property)
         {
             return GetPropertyAccessModifiers(property)+ GetPropertyModifiers(property);
         }
 
-        //методы свойств
         public static string GetPropertyMethods(PropertyInfo property)
         {
             string result = " { ";
@@ -190,13 +177,11 @@ namespace AssemblyBrowser
             return result;
         }
 
-        //модификаторы для методов
         public static string GetMethodsAtributes(MethodInfo method)
         {
             return GetMethodAccessModifiers(method) + GetMethodModifiers(method);
         }
         
-        //модификаторы для параметров
         public static string GetParamsAtributes(ParameterInfo parameter)
         {
             return GetParameterModifiers(parameter);

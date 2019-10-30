@@ -80,10 +80,10 @@ namespace StructEnumDelegate
 {
     public enum Operation
     {
-        Add = 2,
-        Subtract = 4,
-        Multiply = 8,
-        Divide = 16
+        Add,
+        Subtract,
+        Multiply,
+        Divide
     }
 
     public delegate void Message();
